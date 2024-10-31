@@ -1,7 +1,5 @@
 package com.luan.picpay_desafio.domain.exceptions;
 
-import org.springframework.http.HttpStatus;
-
 public class ExceptionTemplate {
 
     private String name;

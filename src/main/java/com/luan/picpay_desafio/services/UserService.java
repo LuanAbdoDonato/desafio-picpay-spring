@@ -32,7 +32,11 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public UserDTO findById(Long id){
-        return new UserDTO(userRepository.findById(id).orElseThrow());
+    public User findById(Long id){
+        return userRepository.getReferenceById(id);
+    }
+
+    public void saveUser(User user){
+        userRepository.save(user);
     }
 }

@@ -1,5 +1,6 @@
 package com.luan.picpay_desafio.domain;
 
+import com.luan.picpay_desafio.dto.TransactionDTO;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -12,8 +13,13 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JoinColumn (name = "balance")
     private BigDecimal transactionValue;
+
+    @JoinColumn (name = "payerId")
     private Long payerId;
+
+    @JoinColumn (name = "payeeId")
     private Long payeeId;
 
     public Transaction(BigDecimal transactionValue, Long payerId, Long payeeId) {
@@ -23,6 +29,12 @@ public class Transaction {
     }
 
     public Transaction(){
+    }
+
+    public Transaction(TransactionDTO dto){
+        setPayeeId(dto.getPayeeId());
+        setPayerId(dto.getPayerId());
+        setTransactionValue(dto.getTransactionValue());
     }
 
     public Long getId() {
