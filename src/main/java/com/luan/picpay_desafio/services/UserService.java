@@ -6,6 +6,7 @@ import com.luan.picpay_desafio.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,8 +15,15 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public List<UserDTO> getAllUsers(){
+        List<User> users = userRepository.findAll();
+
+        List<UserDTO> dto = new ArrayList<>();
+
+        for(User u : users){
+            dto.add(new UserDTO(u));
+        }
+        return dto;
     }
 
     public void createUser(UserDTO userDTO){
