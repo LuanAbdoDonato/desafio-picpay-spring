@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
 
 @RestControllerAdvice
 public class ExceptionsHandler {
@@ -20,6 +21,13 @@ public class ExceptionsHandler {
 
     @ExceptionHandler(InvalidUserCreation.class)
     public ResponseEntity<ExceptionTemplate> invalidUserCreation(InvalidUserCreation e){
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
+
+        return ResponseEntity.status(status).body(new ExceptionTemplate("Something went wrong", e.getMessage(),"401"));
+    }
+
+    @ExceptionHandler(HttpClientErrorException.class)
+    public ResponseEntity<ExceptionTemplate> httpClientErrorException(HttpClientErrorException e){
         HttpStatus status = HttpStatus.UNAUTHORIZED;
 
         return ResponseEntity.status(status).body(new ExceptionTemplate("Something went wrong", e.getMessage(),"401"));
