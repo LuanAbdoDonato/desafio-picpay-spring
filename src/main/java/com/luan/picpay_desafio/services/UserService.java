@@ -31,4 +31,8 @@ public class UserService {
 
         userRepository.save(user);
     }
+
+    public UserDTO findById(Long id){
+        return new UserDTO(userRepository.findById(id).orElseThrow());
+    }
 }
