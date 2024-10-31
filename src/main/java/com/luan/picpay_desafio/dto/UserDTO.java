@@ -1,6 +1,7 @@
 package com.luan.picpay_desafio.dto;
 
 import com.luan.picpay_desafio.domain.User;
+import com.luan.picpay_desafio.domain.enums.UserType;
 
 public class UserDTO {
 
@@ -8,12 +9,14 @@ public class UserDTO {
     private String cpfCnpj;
     private String email;
     private String password;
+    private UserType type;
 
-    public UserDTO(String fullName, String cpfCnpj, String email, String password) {
+    public UserDTO(String fullName, String cpfCnpj, String email, String password, UserType type) {
         this.fullName = fullName;
         this.cpfCnpj = cpfCnpj;
         this.email = email;
         this.password = password;
+        this.type = type;
     }
 
     public UserDTO(User user){
@@ -53,5 +56,13 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
     }
 }

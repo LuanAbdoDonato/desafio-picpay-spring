@@ -1,5 +1,6 @@
 package com.luan.picpay_desafio.domain;
 
+import com.luan.picpay_desafio.domain.enums.UserType;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,11 +23,15 @@ public class User {
     @JoinColumn(name = "password")
     private String password;
 
-    public User(String fullName, String cpfCnpj, String email, String password) {
+    @JoinColumn(name = "User_type")
+    private UserType type;
+
+    public User(String fullName, String cpfCnpj, String email, String password, UserType type) {
         this.fullName = fullName;
         this.cpfCnpj = cpfCnpj;
         this.email = email;
         this.password = password;
+        this.type = type;
     }
 
     public User() {
@@ -70,5 +75,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
     }
 }
