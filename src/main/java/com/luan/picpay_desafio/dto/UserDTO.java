@@ -3,6 +3,8 @@ package com.luan.picpay_desafio.dto;
 import com.luan.picpay_desafio.domain.User;
 import com.luan.picpay_desafio.domain.enums.UserType;
 
+import java.math.BigDecimal;
+
 public class UserDTO {
 
     private String fullName;
@@ -10,13 +12,15 @@ public class UserDTO {
     private String email;
     private String password;
     private UserType type;
+    private BigDecimal balance;
 
-    public UserDTO(String fullName, String cpfCnpj, String email, String password, UserType type) {
+    public UserDTO(String fullName, String cpfCnpj, String email, String password, UserType type, BigDecimal balance) {
         this.fullName = fullName;
         this.cpfCnpj = cpfCnpj;
         this.email = email;
         this.password = password;
         this.type = type;
+        this.balance = balance;
     }
 
     public UserDTO(User user){
@@ -24,6 +28,8 @@ public class UserDTO {
        setCpfCnpj(user.getCpfCnpj());
        setEmail(user.getEmail());
        setPassword(user.getPassword());
+       setBalance(user.getBalance());
+       setType(user.getType());
     }
 
     public String getFullName() {
@@ -64,5 +70,13 @@ public class UserDTO {
 
     public void setType(UserType type) {
         this.type = type;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 }
