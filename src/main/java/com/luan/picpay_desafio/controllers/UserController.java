@@ -1,5 +1,6 @@
 package com.luan.picpay_desafio.controllers;
 
+import com.luan.picpay_desafio.domain.User;
 import com.luan.picpay_desafio.dto.UserDTO;
 import com.luan.picpay_desafio.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,9 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
 
-    @PutMapping(path = "/create")
-    public ResponseEntity<Void> createUser(@RequestBody UserDTO dto){
-        userService.createUser(dto);
+    @PutMapping(value = "/create")
+    public ResponseEntity<Void> createUser(@RequestBody User user){
+        userService.createUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
