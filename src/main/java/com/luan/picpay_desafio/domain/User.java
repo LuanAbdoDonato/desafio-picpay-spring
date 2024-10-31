@@ -1,6 +1,7 @@
 package com.luan.picpay_desafio.domain;
 
 import com.luan.picpay_desafio.domain.enums.UserType;
+import com.luan.picpay_desafio.dto.UserDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -35,6 +36,14 @@ public class User {
     }
 
     public User() {
+    }
+
+    public User(UserDTO dto){
+        setFullName(dto.getFullName());
+        setEmail(dto.getEmail());
+        setCpfCnpj(dto.getCpfCnpj());
+        setType(dto.getType());
+        setPassword(dto.getPassword());
     }
 
     public Long getId() {

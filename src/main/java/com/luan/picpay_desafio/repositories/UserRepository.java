@@ -1,6 +1,7 @@
 package com.luan.picpay_desafio.repositories;
 
 import com.luan.picpay_desafio.domain.User;
+import com.luan.picpay_desafio.dto.UserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

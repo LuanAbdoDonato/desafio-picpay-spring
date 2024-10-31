@@ -18,7 +18,6 @@ public class ExceptionsHandler {
         return ResponseEntity.status(status).body(new ExceptionTemplate("Something went wrong", e.getMessage(),"400"));
     }
 
-
     @ExceptionHandler(InvalidUserCreation.class)
     public ResponseEntity<ExceptionTemplate> invalidUserCreation(InvalidTransaction e){
         HttpStatus status = HttpStatus.UNAUTHORIZED;
